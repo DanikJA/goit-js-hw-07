@@ -35,7 +35,7 @@ function makeGalleryFn(cards){
     <img
       class="gallery__image"
       src="${card.preview}"
-      data-source="{card.original}"
+      data-source="${card.original}"
       alt="${card.description}"
     />
   </a>
