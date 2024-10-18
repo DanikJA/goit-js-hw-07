@@ -36,10 +36,24 @@ function openModalPhotoOnClick(event) {
     
   const instance = basicLightbox.create(`
     <img src="${currentImg}" width="800" height="600">
-`);
+`, {
+      onShow: () => {
+        window.addEventListener("keydown", closeOnEscClick);
+      },
+      onClose: () => {
+        window.removeEventListener("keydown", closeOnEscClick);
+      },
+    });
 
 
-instance.show()
+  if (e.target !== e.currentTarget) instance.show();
+
+  function closeOnEscClick(e) {
+    if (e.code === "Escape") instance.close();
+  }
+
 }
+
+
 
 galleryEl.addEventListener('click', openModalPhotoOnClick);   
