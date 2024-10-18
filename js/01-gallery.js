@@ -45,13 +45,17 @@ function makeGalleryFn(cards){
 }
 
 
-galleryEl.addEventListener('click', openModalPhotoOnClick);
+
 
 function openModalPhotoOnClick(event) {
     event.preventDefault();
 
     const currentImg = event.target.dataset.source;
-
+    
+    if(!currentImg) {
+        return;
+    }
+    
     const instance = basicLightbox.create(`
     <img src="${currentImg}" width="800" height="600">
 `)
@@ -59,3 +63,4 @@ function openModalPhotoOnClick(event) {
 instance.show()
 }
 
+galleryEl.addEventListener('click', openModalPhotoOnClick);
