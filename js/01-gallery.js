@@ -8,7 +8,7 @@ const galleryEl = document.querySelector('.gallery');
 
 const getEl = makeGalleryFn(galleryItems);
 galleryEl.insertAdjacentHTML('beforeend', getEl);
-
+////////////////////////////////////////////////////////////////////////////////
 function makeGalleryFn(cards){
     const markUp = cards.map(card => {
         return `<li class="gallery__item">
@@ -24,6 +24,8 @@ function makeGalleryFn(cards){
     }).join('');
     return markUp;
 }
+/////////////////////////////////////////////////////////////////////////////////////////
+let instance;
 
 function openModalPhotoOnClick(event) {
     event.preventDefault();
@@ -34,11 +36,23 @@ function openModalPhotoOnClick(event) {
         return;
     }
     
-    const instance = basicLightbox.create(`
+  instance = basicLightbox.create(`
     <img src="${currentImg}" width="800" height="600">
-`)
+`),
+  {
+    Close: () => {
+       window.removeEventListener('keydown', closeOnClick);
+    }
+ }
+}
 
-instance.show()
+window.addEventListener('keydown', closeOnClick);
+
+
+function closeOnClick(event){
+  if(event.value === 'Escape') {
+    instance.close();
+  }
 }
 
 galleryEl.addEventListener('click', openModalPhotoOnClick);     
