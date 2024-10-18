@@ -5,7 +5,6 @@ console.log(galleryItems);
   
 
 const galleryEl = document.querySelector('.gallery');
-
 const getEl = makeGalleryFn(galleryItems);
 galleryEl.insertAdjacentHTML('beforeend', getEl);
 
