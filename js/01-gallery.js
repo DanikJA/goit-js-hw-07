@@ -39,15 +39,16 @@ function openModalPhotoOnClick(event) {
   instance = basicLightbox.create(`
     <img src="${currentImg}" width="800" height="600">
 
-  {  onClose: () => {
+  ,{  onClose: () => {
        window.removeEventListener('keydown', closeOnClick);
     }
-`)
+  }
+`);
+  instance.show();
+  window.addEventListener('keydown', closeOnClick);
+
 };
-   instance.show();
-
-window.addEventListener('keydown', closeOnClick);
-
+  
 
 function closeOnClick(event){
   if(event.code === 'Escape') {
