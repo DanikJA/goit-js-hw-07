@@ -46,10 +46,10 @@ function openModalPhotoOnClick(event) {
     });
 
 
-  if (e.target !== e.currentTarget) instance.show();
+  if (e.target !== event.currentTarget) instance.show();
 
   function closeOnEscClick(e) {
-    if (e.code === "Escape") instance.close();
+    if (event.code === "Escape") instance.close();
   }
 
 }
