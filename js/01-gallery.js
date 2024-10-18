@@ -46,9 +46,9 @@ function openModalPhotoOnClick(event) {
     });
 
 
-  if (e.target !== event.currentTarget) instance.show();
+  if (event.target !== event.currentTarget) instance.show();
 
-  function closeOnEscClick(e) {
+  function closeOnEscClick(event) {
     if (event.code === "Escape") instance.close();
   }
 
