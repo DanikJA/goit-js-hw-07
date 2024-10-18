@@ -24,33 +24,33 @@ function makeGalleryFn(cards){
     }).join('');
     return markUp;
 }
-/////////////////////////////////////////////////////////////////////////////////////////
+
 let instance;
 
 function openModalPhotoOnClick(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    const currentImg = event.target.dataset.source;
+  const currentImg = event.target.dataset.source;
     
-    if(!currentImg) {
-        return;
-    }
+  if (!currentImg) {
+    return;
+  }
     
   instance = basicLightbox.create(`
     <img src="${currentImg}" width="800" height="600">
-`),
-  {
-    Close: () => {
+
+  {  onClose: () => {
        window.removeEventListener('keydown', closeOnClick);
     }
- }
-}
+`)
+};
+   instance.show();
 
 window.addEventListener('keydown', closeOnClick);
 
 
 function closeOnClick(event){
-  if(event.value === 'Escape') {
+  if(event.code === 'Escape') {
     instance.close();
   }
 }
