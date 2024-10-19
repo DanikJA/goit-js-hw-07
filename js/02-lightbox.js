@@ -3,23 +3,46 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
-const galleryEl = document.querySelector('.gallery');
-const getEl = createGallery(galleryItems);
+// const galleryEl = document.querySelector('.gallery');
+// const getEl = createGallery(galleryItems);
 
-function createGallery(cards) {
-    const markUp = cards.map(({original,preview,description}) => {
-     return `<li class="gallery__item">
-   <a class="gallery__link" href="${original}">
-      <img class="gallery__image" src="${preview}" alt="${description}" />
+// function createGallery(cards) {
+//     const markUp = cards.map(({original,preview,description}) => {
+//      return `<li class="gallery__item">
+//    <a class="gallery__link" href="${original}">
+//       <img class="gallery__image" src="${preview}" alt="${description}" />
+//    </a>
+// </li>`   
+//     }).join('');
+//     return markUp;
+// }
+
+// galleryEl.insertAdjacentHTML('beforeend', getEl);
+
+// const lightbox = new SimpleLightbox('.gallery__link', {
+//     captionDelay: 250,
+//     captionsData: 'alt',
+// });
+
+
+const galleryEl = document.querySelector('.gallery');
+const getEl = makeGallery(galleryItems);
+
+function makeGallery(cards){
+    const markUp = cards.map(card => {
+        return `<li class="gallery__item">
+   <a class="gallery__link" href="${card.original}">
+      <img class="gallery__image" src="${card.preview}" alt="${card.description}" />
    </a>
-</li>`   
+</li>`
     }).join('');
+
     return markUp;
 }
 
 galleryEl.insertAdjacentHTML('beforeend', getEl);
 
-const lightbox = new SimpleLightbox('.gallery__link', {
+const lightBox = new SimpleLightbox('.gallery__link', {
     captionDelay: 250,
-    captionsData: 'alt',
+    captionsData: 'alt'
 });
