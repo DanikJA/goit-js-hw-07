@@ -19,7 +19,7 @@ function createGallery(cards) {
 
 galleryEl.insertAdjacentHTML('beforeend', getEl);
 
-const lightboxEl = new SimpleLightbox('.gallery__link', {
+const lightbox = new SimpleLightbox('.gallery__link', {
     captionDelay: 250,
     captionsData: 'alt',
 });
