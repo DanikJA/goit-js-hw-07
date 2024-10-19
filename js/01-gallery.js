@@ -36,11 +36,8 @@ function openModalPhotoOnClick(event) {
   const instance = basicLightbox.create(`
     <img src="${currentImg}" width="800" height="600">
 `);
-
-
+  
 instance.show()
 }
-
-
 
 galleryEl.addEventListener('click', openModalPhotoOnClick);   
