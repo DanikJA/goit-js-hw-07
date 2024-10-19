@@ -3,7 +3,6 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
   
-
 // const galleryEl = document.querySelector('.gallery');
 // const getEl = makeGalleryFn(galleryItems);
 // galleryEl.insertAdjacentHTML('beforeend', getEl);
@@ -85,7 +84,5 @@ function openModalWindow(event){
   }
   document.addEventListener('keydown', closeModal);
 }
-
-
 
 galleryEl.addEventListener('click', openModalWindow);
