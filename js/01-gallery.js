@@ -61,6 +61,14 @@ function createGallery(cards){
   return markUp;
 }
 
+let instance;
+
+const closeModal = (e) => {
+    if (e.key === 'Escape') {
+      instance.close();
+    }
+  };
+
 
 function openModalWindow(event){
   event.preventDefault();
@@ -69,20 +77,23 @@ function openModalWindow(event){
 
   if(!currentImg){
     return;
-  }
+  };
   
-  const instance = basicLightbox.create(`
-    <img src="${currentImg}" width="800" height="600">
-`)
-  instance.show();
 
-  const closeModal = (e) => {
-    if(e.key === 'Escape') {
-      instance.close();
-      document.removeEventListener('keydown',closeModal )
-   }
+   instance = basicLightbox.create(`
+    <img src="${currentImg}" width="800" height="600">
+,{
+  onShow: (instance) => {
+    document.addEventListener('keydown', closeModal )
+  },
+  onClose: (instance) =>{
+    document.removeEventListener('keydown', closeModal)
   }
-  document.addEventListener('keydown', closeModal);
+}
+`);
+
+  instance.show();
 }
 
 galleryEl.addEventListener('click', openModalWindow);
+
