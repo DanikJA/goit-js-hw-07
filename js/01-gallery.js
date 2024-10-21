@@ -80,8 +80,8 @@ function openModalWindow(event){
   };
   
 
-   instance = basicLightbox.create(`
-    <img src="${currentImg}" width="800" height="600">
+   instance = basicLightbox.create(
+    `<img src="${currentImg}" width="800" height="600">`
 ,{
   onShow: (instance) => {
     document.addEventListener('keydown', closeModal )
@@ -90,7 +90,7 @@ function openModalWindow(event){
     document.removeEventListener('keydown', closeModal)
   }
 }
-`);
+);
 
   instance.show();
 }
