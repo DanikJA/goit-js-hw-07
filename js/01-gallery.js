@@ -58,7 +58,7 @@ function createGallery(cards){
   </a>
 </li>`
   }).join('')
-  return markUp;
+  return markUp;  
 }
 
 let instance;
